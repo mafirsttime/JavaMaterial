@@ -1,0 +1,106 @@
+python中源码位置(以urllib为例):
+    python中自带的模块:
+        /usr/lib/python3.5/urllib/request.py(python3)
+        /usr/lib/python2.7/urllib2.py(python2)
+    python的第三方模块:
+        /usr/local/lib/python2.7/site-packages/
+
+    注意:关于urllib模块,python3中的导入方法为import urllib.request.方法名
+
+例子1:返回百度首页内容:
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+    #!/usr/bin/env python
+    # coding=utf-8
+ 
+    import urllib2
+    #向指定的URL地址发送请求,并返回服务器响应的类文件对象
+    response = urllib2.urlopen("http://www.baidu.com")
+ 
+    #服务器返回的类文件对象支持python文件对象的操作方法 
+    #read()方法就是读取文件里的全部内容,返回字符串
+    html = response.read()
+ 
+    #打印响应内容
+    print(html)
+ 
+    注意:urlopen可以直接请求一个类文件对象,但是它不支持请求头构造(
+    在反爬过程中,服务器可能会查看我们的请求头,而默认的请求头很容易被识别
+    为爬虫,如python爬虫头部的User-Agent为Python-urllib/%s" % __version__
+    可以通过查看urllib2源码或抓包查看.
+     
+ 
+    ),所以生产中的写法如下:
+    #!/usr/bin/env python
+    # coding=utf-8
+ 
+    import urllib2
+ 
+    #User-Agent是爬虫和反爬虫的第一步
+    ua_headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3253.3 Safari/537.36",
+    }
+ 
+    #通过urllib2.Request()方法构造一个请求对象
+    request = urllib2.Request("http://www.baidu.com",headers = ua_headers)
+ 
+    #向指定的URL地址发送请求,并返回服务器响应的类文件对象
+    response = urllib2.urlopen(request)
+ 
+    #服务器返回的类文件对象支持python文件对象的操作方法 
+    #read()方法就是读取文件里的全部内容,返回字符串
+    html = response.read()
+ 
+    #打印响应内容
+    print(html)
+ 
+    #打印返回的状态码
+    print(response.getcode())
+ 
+    #打印具体返回页面的是哪个URL
