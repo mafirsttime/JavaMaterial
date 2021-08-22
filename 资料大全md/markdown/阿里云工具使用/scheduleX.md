@@ -14,17 +14,11 @@
 
 阿里云帮助文档：https://help.aliyun.com/product/147760.html?spm=5176.14256785.schedulerxContainer.8.6fbd126ddPbiwu
 
-
-
 申请阿里云RAM用户分布式任务调度schedulerx2控制台权限，截止文档编写截止（2021-03-29），企业微信审批流程没有相应资源申请，可以发邮件to运维，参考内容如下：
 
 阿里云分布式任务调度schedulerx2控制台权限
 
-   阿里云子账号：[**wangmingkai@haochezhu.onaliyun.com**](mailto:wangmingkai@haochezhu.onaliyun.com)
-
   【用途】XXXXXX
-
-
 
 **！！！注意！！！**
 
