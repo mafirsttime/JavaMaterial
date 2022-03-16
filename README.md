@@ -1,4 +1,6 @@
 # JavaMaterial
+1. 主页地址  https://github.com/mafirsttime/JavaMaterial 
+2. 加油
 
 项目介绍
 java学习精通小分队资源分享平台
